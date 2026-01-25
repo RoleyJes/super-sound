@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  /* ================================
+     Typography
+     ================================ */
+  --font-rubik: "Rubik", sans-serif;
+
+  /* ================================
+     Neutral Colors — Light Mode
+     ================================ */
+  --color-bg-main: #fff1fa;
+  --color-bg-slideControl: #efefef;
+  --color-bg-muted: #f7f7f7;
+
+  --color-text-primary: #1b1a1b;
+  --color-text-secondary: #6b6b6b;
+  --color-text-muted: #d9d9d9;
+
+  --color-border-soft: #e6e6e6;
+
+  /* ================================
+     Accent Colors (default: pink)
+     ================================ */
+  --color-accent-primary: #9b1668;
+  --color-accent-bg: #8d1361;
+  --color-accent-soft: rgba(192, 38, 211, 0.15);
+  --color-accent-glow: rgba(141, 19, 96, 0.3);
+  /* --color-accent-glow: rgba(192, 38, 211, 0.4); */
+
+  /* ================================
+     Layout
+     ================================ */
+  /* --spacing-container: 75rem; */
+
+  /* ================================
+     Shadows
+     ================================ */
+  --shadow-black: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+  --shadow-accent: -2px 5px 15px 1px var(--color-accent-glow);
+  /* --shadow-accent: 0 0 40px var(--color-accent-glow); */
+}
+
+testt {
+  color: rgba(0, 0, 0, 0.342);
+}
+/* [data-theme="dark"] {
+  --bg-main: #050505;
+  --bg-card: #121212;
+  --bg-muted: #1a1a1a;
+
+  --text-primary: #ffffff;
+  --text-secondary: #d1d1d1;
+  --text-muted: #8b8b8b;
+
+  --border-soft: #262626;
+} */
