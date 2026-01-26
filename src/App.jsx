@@ -1,7 +1,11 @@
 import Home from "./pages/Home";
 
 function App() {
-  return <Home />;
+  return (
+    // <div className="bg-bg-green pb-12">
+    <Home />
+    // </div>
+  );
 }
 
 export default App;

@@ -11,7 +11,12 @@
   /* ================================
      Neutral Colors — Light Mode
      ================================ */
-  --color-bg-main: #fff1fa;
+  --color-bg-pink: #fff1fa;
+  --color-bg-green: #f4fff4;
+  --color-bg-yellow: #fff8ea;
+  --color-bg-blue: #f6f8ff;
+  --color-bg-purple: #fff2ff;
+
   --color-bg-slideControl: #efefef;
   --color-bg-muted: #f7f7f7;
 
@@ -22,18 +27,20 @@
   --color-border-soft: #e6e6e6;
 
   /* ================================
-     Accent Colors (default: pink)
+     Accent Colors
      ================================ */
-  --color-accent-primary: #9b1668;
-  --color-accent-bg: #8d1361;
-  --color-accent-soft: rgba(192, 38, 211, 0.15);
-  --color-accent-glow: rgba(141, 19, 96, 0.3);
-  /* --color-accent-glow: rgba(192, 38, 211, 0.4); */
+  --color-accent-pink: #9b1668;
 
-  /* ================================
-     Layout
-     ================================ */
-  /* --spacing-container: 75rem; */
+  --color-accent-carousel-bg-pink: #8d1361;
+
+  --color-accent-dot-pink: #9d166d;
+  --color-accent-dot-green: #009400;
+  --color-accent-dot-blue: #002bb7;
+  --color-accent-dot-purple: #a800a3;
+  --color-accent-dot-yellow: #a36f00;
+
+  --color-accent-glow: rgba(141, 19, 96, 0.3);
+  --color-accent-dots: #901363;
 
   /* ================================
      Shadows
@@ -57,3 +64,18 @@ testt {
 
   --border-soft: #262626;
 } */
+
+/* Embla carousel styles */
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
