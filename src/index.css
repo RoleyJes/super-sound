@@ -30,8 +30,16 @@
      Accent Colors
      ================================ */
   --color-accent-pink: #9b1668;
+  --color-accent-green: #008900;
+  --color-accent-blue: #002297;
+  --color-accent-purple: #9b166a;
+  --color-accent-yellow: #a57000;
 
-  --color-accent-carousel-bg-pink: #8d1361;
+  --color-accent-carousel-pink: #8d1361;
+  --color-accent-carousel-green: #008900;
+  --color-accent-carousel-blue: #002297;
+  --color-accent-carousel-purple: #81007d;
+  --color-accent-carousel-yellow: #a57000;
 
   --color-accent-dot-pink: #9d166d;
   --color-accent-dot-green: #009400;

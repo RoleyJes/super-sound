@@ -1,4 +1,5 @@
 import frame7 from "../assets/frame7.webp";
+import Headpiece1 from "../assets/Headpiece1.png";
 import HeadpiecePink from "../assets/HeadpiecePink.webp";
 import HeadpieceGreen from "../assets/HeadpieceGreen.webp";
 import HeadpieceBlue from "../assets/HeadpieceBlue.webp";
@@ -15,33 +16,54 @@ import { useState } from "react";
 const variants = [
   {
     id: 1,
-    color: "#9d166d",
-    img: HeadpiecePink,
+    dot: "bg-accent-dot-pink",
+    outline: "outline-accent-dot-pink/30",
+    ring: "ring-accent-dot-pink/20",
+    img: Headpiece1,
+    // img: HeadpiecePink,
     bg: "bg-bg-pink",
+    text: "text-accent-pink",
+    carousel: "bg-accent-carousel-pink",
   },
   {
     id: 2,
-    color: "#009400",
+    dot: "bg-accent-dot-green",
+    outline: "outline-accent-dot-green/30",
+    ring: "ring-accent-dot-green/20",
     img: HeadpieceGreen,
     bg: "bg-bg-green",
+    text: "text-accent-green",
+    carousel: "bg-accent-carousel-green",
   },
   {
     id: 3,
-    color: "#002bb7",
+    dot: "bg-accent-dot-blue",
+    outline: "outline-accent-dot-blue/30",
+    ring: "ring-accent-dot-blue/20",
     img: HeadpieceBlue,
     bg: "bg-bg-blue",
+    text: "text-accent-blue",
+    carousel: "bg-accent-carousel-blue",
   },
   {
     id: 4,
-    color: "#a800a3",
+    dot: "bg-accent-dot-purple",
+    outline: "outline-accent-dot-purple/30",
+    ring: "ring-accent-dot-purple/20",
     img: HeadpiecePurple,
     bg: "bg-bg-purple",
+    text: "text-accent-purple",
+    carousel: "bg-accent-carousel-purple",
   },
   {
     id: 5,
-    color: "#a36f00",
+    dot: "bg-accent-dot-yellow",
+    outline: "outline-accent-dot-yellow/30",
+    ring: "ring-accent-dot-yellow/20",
     img: HeadpieceYellow,
     bg: "bg-bg-yellow",
+    text: "text-accent-yellow",
+    carousel: "bg-accent-carousel-yellow",
   },
 ];
 
@@ -71,14 +93,17 @@ const carouselItems = [
 
 function Home() {
   const [activeVariant, setActiveVariant] = useState(variants[0]);
-  const [index, setIndex] = useState(0);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  // const [variantIndex, setVariantIndex] = useState(0);
 
   function next() {
-    setIndex((i) => (i + 1) % carouselItems.length);
+    setCarouselIndex((i) => (i + 1) % carouselItems.length);
   }
 
   function prev() {
-    setIndex((i) => (i - 1 + carouselItems.length) % carouselItems.length);
+    setCarouselIndex(
+      (i) => (i - 1 + carouselItems.length) % carouselItems.length,
+    );
   }
 
   return (
@@ -93,15 +118,18 @@ function Home() {
           <div className="lg:basis-md">
             {/* texts */}
             <div className="mb-5.75">
-              <span className="mb-2 text-[17px] font-bold text-accent-primary">
+              <span
+                className={`mb-2 text-[17px] font-bold transition-all duration-700 ease-in-out ${activeVariant.text}`}
+              >
                 SUMMER COLLECTION
               </span>
               <h1 className="relative mb-4 text-[64px] font-bold">
                 SuperSound
-                <span className="absolute top-3 right-7.5 text-sm text-accent-primary">
+                <span
+                  className={`absolute top-3 right-7.5 text-sm transition-all duration-700 ease-in-out ${activeVariant.text}`}
+                >
                   TM
                 </span>
-                {/* <sup className="text-[30px text-accent-primary">TM</sup> */}
               </h1>
               <p className="text-lg leading-5.25 text-black">
                 Enjoy a super listening experience at maximum comfort and sound
@@ -112,14 +140,18 @@ function Home() {
 
             {/* carousel */}
             <div className="relative">
-              <div className="bg-accent-carousel-bg relative max-w-96.75 rounded-[20px] ps-19.5 pt-7 pb-4 text-white shadow-accent">
+              <div
+                className={`relative max-w-96.75 rounded-[20px] ps-19.5 pt-7 pb-4 text-white shadow-accent transition-all duration-700 ease-in-out ${activeVariant.carousel}`}
+              >
                 {/* Carousel content */}
                 <ul className="flex w-full overflow-hidden">
                   {carouselItems.map((item, i) => (
                     <li
                       key={i}
                       className="min-w-full transition-all duration-700"
-                      style={{ transform: `translateX(-${index * 100}%)` }}
+                      style={{
+                        transform: `translateX(-${carouselIndex * 100}%)`,
+                      }}
                     >
                       <div className="max-w-55">
                         <p className="font-semibold">{item.title}</p>
@@ -172,8 +204,7 @@ function Home() {
                 <button
                   key={item.id}
                   onClick={() => setActiveVariant(item)}
-                  className={`size-3 cursor-pointer rounded-sm ${activeVariant.id === item.id ? "ring-offset2 ring-4 ring-accent-blue/30 outline-6 outline-offset-1 outline-accent-blue/20" : ""}`}
-                  style={{ backgroundColor: item.color }}
+                  className={`linea size-3 cursor-pointer rounded-sm transition-all duration-300 ${item.dot} ${activeVariant.id === item.id ? `${item.outline} ${item.ring} ring-offset1 ring-6 outline-4` : ""}`}
                 ></button>
               ))}
             </div>
@@ -184,17 +215,19 @@ function Home() {
       {/* Footer */}
       <footer className="mx-auto flex w-full max-w-7xl justify-between px-8">
         <p className="font-medium tracking-[5%]">
-          <span className="text-5xl">01 </span>
+          <span className="inline-block w-18 text-5xl">
+            0{activeVariant.id}
+          </span>
           <span className="text-2xl text-text-secondary">/05.</span>
         </p>
 
         {/* carousel dots */}
         <ul className="flex items-center gap-4 pt-14">
-          {carouselItems.map((_, i) => (
+          {variants.map((variant) => (
             <button
-              key={i}
-              onClick={() => setIndex(i)}
-              className={`size-2 cursor-pointer rounded-full transition-all duration-300 ease-out ${i === index ? "bg-accent-dots outline outline-accent-dots" : "bg-text-muted"}`}
+              key={variant.id}
+              onClick={() => setActiveVariant(variant)}
+              className={`size-2 cursor-pointer rounded-full transition-all duration-300 ease-out ${activeVariant.id === variant.id ? `${variant.dot} size-2.5` : "bg-text-muted"}`}
             ></button>
           ))}
         </ul>
@@ -203,7 +236,7 @@ function Home() {
         <ul className="flex items-center gap-2.5">
           {socials.map((item, i) => (
             <li
-              className="flex size-5.5 items-center justify-center rounded-full bg-text-primary"
+              className="flex size-5.5 cursor-pointer items-center justify-center rounded-full bg-text-primary transition-all duration-300 ease-out hover:scale-90"
               key={i}
             >
               <img src={item.src} alt={item.alt} />
