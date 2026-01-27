@@ -2,7 +2,6 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
 import frame7 from "../assets/frame7.webp";
-import Headpiece1 from "../assets/Headpiece1.png";
 import HeadpiecePink from "../assets/HeadpiecePink.webp";
 import HeadpieceGreen from "../assets/HeadpieceGreen.webp";
 import HeadpieceBlue from "../assets/HeadpieceBlue.webp";
@@ -21,8 +20,7 @@ const variants = [
     dot: "bg-accent-dot-pink",
     outline: "outline-accent-dot-pink/30",
     ring: "ring-accent-dot-pink/20",
-    img: Headpiece1,
-    // img: HeadpiecePink,
+    img: HeadpiecePink,
     bg: "bg-bg-pink",
     text: "text-accent-pink",
     carousel: "bg-accent-carousel-pink",
@@ -193,19 +191,13 @@ function Home() {
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeVariant.id}
-                  // initial={{ opacity: 0, transform: "translateY(-20px)" }}
-                  // animate={{ opacity: 1, transform: "translateY(0px)" }}
-                  // exit={{ opacity: 0, transform: "translateY(-20px)" }}
-                  // transition={{ duration: 0.35, ease: "easeOut" }}
-
-                  initial={{ opacity: 0, scale: 0.96, y: 20 }}
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.96, y: -20 }}
+                  exit={{ opacity: 0, scale: 0.95, y: -20 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
                   src={activeVariant.img}
                   alt="pink head phone"
                   className="w-full object-contain"
-                  // className="w-full object-contain"
                 />
               </AnimatePresence>
             </div>
@@ -215,20 +207,19 @@ function Home() {
 
             {/* right dots for selecting headphones */}
             <div className="absolute right-0 bottom-1/2 flex h-2/3 w-1.25 translate-y-1/2 flex-col items-center justify-center gap-12.25 rounded-[30px] bg-[#eeeeee]">
-              {variants.map((item) => {
-                const isActive = item.id === activeVariant.id;
+              {variants.map((variant) => {
+                const isActive = variant.id === activeVariant.id;
                 return (
                   <motion.button
-                    key={item.id}
-                    onClick={() => setActiveVariant(item)}
+                    key={variant.id}
+                    onClick={() => setActiveVariant(variant)}
                     whileHover={{ scale: 1.3 }}
                     whileTap={{ scale: 0.95 }}
                     animate={{
                       opacity: isActive ? 1 : 0.6,
                     }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    className={`size-3 cursor-pointer rounded-sm ${item.dot} ${isActive ? `${item.outline} ${item.ring} ring-6 outline-4` : ""}`}
-                    // className={` size-3 cursor-pointer rounded-sm transition-all duration-300 ${item.dot} ${activeVariant.id === item.id ? `${item.outline} ${item.ring} ring-offset1 ring-6 outline-4` : ""}`}
+                    className={`size-3 cursor-pointer rounded-sm ${variant.dot} ${isActive ? `${variant.outline} ${variant.ring} ring-6 outline-4` : ""}`}
                   />
                 );
               })}
@@ -239,20 +230,30 @@ function Home() {
 
       {/* Footer */}
       <footer className="mx-auto flex w-full max-w-7xl justify-between px-8">
+        {/* variant index */}
         <p className="font-medium tracking-[5%]">
-          <span className="inline-block w-18 text-5xl">
-            0{activeVariant.id}
-          </span>
+          <AnimatePresence mode="popLayout">
+            <motion.span
+              key={activeVariant.id}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="inline-block w-18 text-5xl"
+            >
+              0{activeVariant.id}
+            </motion.span>
+          </AnimatePresence>
           <span className="text-2xl text-text-secondary">/05.</span>
         </p>
 
-        {/* carousel dots */}
+        {/* variant dots */}
         <ul className="flex items-center gap-4 pt-14">
           {variants.map((variant) => (
             <button
               key={variant.id}
               onClick={() => setActiveVariant(variant)}
-              className={`size-2 cursor-pointer rounded-full transition-all duration-300 ease-out ${activeVariant.id === variant.id ? `ring-2 ${variant.dot} ${variant.ring}` : "bg-text-muted"}`}
+              className={`size-2 cursor-pointer rounded-full transition-all duration-300 ease-out ${activeVariant.id === variant.id ? `scale-150 ${variant.dot} ${variant.ring}` : "bg-text-muted"}`}
             ></button>
           ))}
         </ul>
