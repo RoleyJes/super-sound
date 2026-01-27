@@ -1,3 +1,6 @@
+import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
+
 import frame7 from "../assets/frame7.webp";
 import Headpiece1 from "../assets/Headpiece1.png";
 import HeadpiecePink from "../assets/HeadpiecePink.webp";
@@ -11,7 +14,6 @@ import chevronRight from "../assets/chevron-right.webp";
 import facebook from "../assets/facebook.png";
 import instagram from "../assets/instagram.png";
 import twitter from "../assets/twitter.png";
-import { useState } from "react";
 
 const variants = [
   {
@@ -188,11 +190,24 @@ function Home() {
           {/* images */}
           <div className="relative lg:basis-147.5">
             <div className="mx-auto h-143.25 w-125.5">
-              <img
-                src={activeVariant.img}
-                alt="pink head phone"
-                className="w-full object-contain"
-              />
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={activeVariant.id}
+                  // initial={{ opacity: 0, transform: "translateY(-20px)" }}
+                  // animate={{ opacity: 1, transform: "translateY(0px)" }}
+                  // exit={{ opacity: 0, transform: "translateY(-20px)" }}
+                  // transition={{ duration: 0.35, ease: "easeOut" }}
+
+                  initial={{ opacity: 0, scale: 0.96, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.96, y: -20 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  src={activeVariant.img}
+                  alt="pink head phone"
+                  className="w-full object-contain"
+                  // className="w-full object-contain"
+                />
+              </AnimatePresence>
             </div>
             <div className="flex items-center justify-center">
               <img src={soundPink} alt="stereo" className="-mt-10" />
@@ -200,13 +215,23 @@ function Home() {
 
             {/* right dots for selecting headphones */}
             <div className="absolute right-0 bottom-1/2 flex h-2/3 w-1.25 translate-y-1/2 flex-col items-center justify-center gap-12.25 rounded-[30px] bg-[#eeeeee]">
-              {variants.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => setActiveVariant(item)}
-                  className={`linea size-3 cursor-pointer rounded-sm transition-all duration-300 ${item.dot} ${activeVariant.id === item.id ? `${item.outline} ${item.ring} ring-offset1 ring-6 outline-4` : ""}`}
-                ></button>
-              ))}
+              {variants.map((item) => {
+                const isActive = item.id === activeVariant.id;
+                return (
+                  <motion.button
+                    key={item.id}
+                    onClick={() => setActiveVariant(item)}
+                    whileHover={{ scale: 1.3 }}
+                    whileTap={{ scale: 0.95 }}
+                    animate={{
+                      opacity: isActive ? 1 : 0.6,
+                    }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className={`size-3 cursor-pointer rounded-sm ${item.dot} ${isActive ? `${item.outline} ${item.ring} ring-6 outline-4` : ""}`}
+                    // className={` size-3 cursor-pointer rounded-sm transition-all duration-300 ${item.dot} ${activeVariant.id === item.id ? `${item.outline} ${item.ring} ring-offset1 ring-6 outline-4` : ""}`}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
@@ -227,7 +252,7 @@ function Home() {
             <button
               key={variant.id}
               onClick={() => setActiveVariant(variant)}
-              className={`size-2 cursor-pointer rounded-full transition-all duration-300 ease-out ${activeVariant.id === variant.id ? `${variant.dot} size-2.5` : "bg-text-muted"}`}
+              className={`size-2 cursor-pointer rounded-full transition-all duration-300 ease-out ${activeVariant.id === variant.id ? `ring-2 ${variant.dot} ${variant.ring}` : "bg-text-muted"}`}
             ></button>
           ))}
         </ul>
