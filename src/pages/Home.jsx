@@ -14,6 +14,7 @@ import facebook from "../assets/facebook.png";
 import instagram from "../assets/instagram.png";
 import twitter from "../assets/twitter.png";
 import Navbar from "../ui/Navbar";
+import { useSelector } from "react-redux";
 
 const variants = [
   {
@@ -23,7 +24,6 @@ const variants = [
     ring: "ring-accent-dot-pink/20",
     img: HeadpiecePink,
     bg: "bg-bg-pink",
-    bgDark: "dark:bg-[#0a0b0a]",
     text: "text-accent-pink",
     modeBorder: "border-accent-pink",
     carousel: "bg-accent-carousel-pink",
@@ -35,7 +35,6 @@ const variants = [
     ring: "ring-accent-dot-green/20",
     img: HeadpieceGreen,
     bg: "bg-bg-green",
-    bgDark: "dark:bg-[#0a0b0a]",
     text: "text-accent-green",
     modeBorder: "border-accent-green",
     carousel: "bg-accent-carousel-green",
@@ -47,7 +46,6 @@ const variants = [
     ring: "ring-accent-dot-blue/20",
     img: HeadpieceBlue,
     bg: "bg-bg-blue",
-    bgDark: "dark:bg-[#0a0b0a]",
     text: "text-accent-blue",
     modeBorder: "border-accent-blue",
     carousel: "bg-accent-carousel-blue",
@@ -59,7 +57,6 @@ const variants = [
     ring: "ring-accent-dot-purple/20",
     img: HeadpiecePurple,
     bg: "bg-bg-purple",
-    bgDark: "dark:bg-[#0a0b0a]",
     text: "text-accent-purple",
     modeBorder: "border-accent-purple",
     carousel: "bg-accent-carousel-purple",
@@ -71,7 +68,6 @@ const variants = [
     ring: "ring-accent-dot-yellow/20",
     img: HeadpieceYellow,
     bg: "bg-bg-yellow",
-    bgDark: "dark:bg-[#0a0b0a]",
     text: "text-accent-yellow",
     modeBorder: "border-accent-yellow",
     carousel: "bg-accent-carousel-yellow",
@@ -79,9 +75,9 @@ const variants = [
 ];
 
 const socials = [
-  { src: facebook, alt: "facebook logo" },
-  { src: instagram, alt: "instagram logo" },
-  { src: twitter, alt: "twitter logo" },
+  { src: facebook, alt: "facebook logo", label: "Facebook" },
+  { src: instagram, alt: "instagram logo", label: "Instagram" },
+  { src: twitter, alt: "X logo", label: "X" },
 ];
 
 const carouselItems = [
@@ -105,6 +101,8 @@ const carouselItems = [
 function Home() {
   const [activeVariant, setActiveVariant] = useState(variants[0]);
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const mode = useSelector((state) => state.theme.mode);
+  const isDark = mode === "dark";
 
   function next() {
     setCarouselIndex((i) => (i + 1) % carouselItems.length);
@@ -118,7 +116,7 @@ function Home() {
 
   return (
     <div
-      className={`pb-12 transition-all duration-700 ease-in-out ${activeVariant.bgDark} ${activeVariant.bg}`}
+      className={`pb-12 transition-all duration-700 ease-in-out dark:bg-bg-dark ${activeVariant.bg}`}
     >
       <Navbar
         bg={`${activeVariant.carousel}/5`}
@@ -134,11 +132,11 @@ function Home() {
             {/* texts */}
             <div className="mb-5.75">
               <span
-                className={`mb-2 text-[17px] font-bold transition-all duration-700 ease-in-out text-${activeVariant.text}`}
+                className={`mb-2 text-[17px] font-bold transition-all duration-700 ease-in-out ${activeVariant.text}`}
               >
                 SUMMER COLLECTION
               </span>
-              <h1 className="relative mb-4 text-[64px] font-bold">
+              <h1 className="relative mb-4 text-[64px] font-bold transition-all duration-500 dark:text-text-dark">
                 SuperSound
                 <span
                   className={`absolute top-3 right-7.5 text-sm transition-all duration-700 ease-in-out ${activeVariant.text}`}
@@ -146,7 +144,7 @@ function Home() {
                   TM
                 </span>
               </h1>
-              <p className="text-lg leading-5.25 text-black">
+              <p className="text-lg leading-5.25 text-black transition-all duration-500 dark:text-text-dark">
                 Enjoy a super listening experience at maximum comfort and sound
                 quality this summer. Sounds made to thrill and style made to
                 please.
@@ -221,7 +219,7 @@ function Home() {
             </div>
 
             {/* right dots for selecting headphones */}
-            <div className="absolute right-0 bottom-1/2 flex h-2/3 w-1.25 translate-y-1/2 flex-col items-center justify-center gap-12.25 rounded-[30px] bg-[#eeeeee]">
+            <div className="absolute right-0 bottom-1/2 flex h-2/3 w-1.25 translate-y-1/2 flex-col items-center justify-center gap-12.25 rounded-[30px] bg-[#eeeeee] transition-all duration-700 ease-in-out dark:bg-[#eeeeee]/60">
               {variants.map((variant) => {
                 const isActive = variant.id === activeVariant.id;
                 return (
@@ -231,7 +229,7 @@ function Home() {
                     whileHover={{ scale: 1.3 }}
                     whileTap={{ scale: 0.95 }}
                     animate={{
-                      opacity: isActive ? 1 : 0.6,
+                      opacity: isDark ? 1 : isActive ? 1 : 0.6,
                     }}
                     transition={{ type: "spring", stiffness: 300 }}
                     className={`size-3 cursor-pointer rounded-sm ${variant.dot} ${isActive ? `${variant.outline} ${variant.ring} ring-6 outline-4` : ""}`}
@@ -254,7 +252,7 @@ function Home() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -50 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="inline-block w-18 text-5xl"
+              className="inline-block w-18 text-5xl dark:text-text-dark-secondary"
             >
               0{activeVariant.id}
             </motion.span>
@@ -268,7 +266,7 @@ function Home() {
             <button
               key={variant.id}
               onClick={() => setActiveVariant(variant)}
-              className={`size-2 cursor-pointer rounded-full transition-all duration-300 ease-out ${activeVariant.id === variant.id ? `scale-150 ${variant.dot} ${variant.ring}` : "bg-text-muted"}`}
+              className={`size-2 cursor-pointer rounded-full transition-all duration-300 ease-out ${activeVariant.id === variant.id ? `scale-150 ${variant.dot} ${variant.ring}` : "bg-bg-muted"}`}
             ></button>
           ))}
         </ul>
@@ -276,12 +274,17 @@ function Home() {
         {/* Socials */}
         <ul className="flex items-center gap-2.5">
           {socials.map((item, i) => (
-            <li
-              className="flex size-5.5 cursor-pointer items-center justify-center rounded-full bg-text-primary transition-all duration-300 ease-out hover:scale-90"
-              key={i}
-            >
-              <img src={item.src} alt={item.alt} />
-            </li>
+            <div className="relative">
+              <li
+                className="peer flex size-6 cursor-pointer items-center justify-center rounded-full border border-text-primary bg-text-primary transition-all duration-300 ease-out dark:border-white"
+                key={i}
+              >
+                <img src={item.src} alt={item.alt} />
+              </li>
+              <p className="absolute -top-7 left-1/2 -translate-x-1/2 -translate-y-3 text-sm opacity-0 transition-all duration-300 peer-hover:translate-y-0 peer-hover:opacity-100 dark:text-text-dark/60">
+                {item.label}
+              </p>
+            </div>
           ))}
         </ul>
       </footer>

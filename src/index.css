@@ -15,7 +15,7 @@
      ******************************** */
 
   /* ================================
-     Background Colors
+     Background Colors - Light Mode
      ================================ */
   --color-bg-pink: #fff1fa;
   --color-bg-green: #f4fff4;
@@ -23,7 +23,12 @@
   --color-bg-purple: #fff2ff;
   --color-bg-yellow: #fff8ea;
   --color-bg-slideControl: #efefef;
-  --color-bg-muted: #f7f7f7;
+  --color-bg-muted: #d9d9d9;
+
+  /* ================================
+  Background Colors - Dark Mode
+  ================================ */
+  --color-bg-dark: #0a0b0a;
 
   /* ================================
      Navbars 
@@ -35,11 +40,16 @@
   --color-navbar-yellow: #a57000;
 
   /* ================================
-     Texts
+     Texts - Light Mode
      ================================ */
   --color-text-primary: #1b1a1b;
   --color-text-secondary: #6b6b6b;
-  --color-text-muted: #d9d9d9;
+
+  /* ================================
+     Texts - Dark Mode
+     ================================ */
+  --color-text-dark: #f5f5f5;
+  --color-text-dark-secondary: #b0afaf;
 
   /* ================================
      Borders
@@ -49,10 +59,12 @@
   /* ================================
      Accent Colors
      ================================ */
-  --color-accent-pink: #9b1668;
+  --color-accent-pink: #9b166a;
+  /* --color-accent-pink: #9b1668; */
   --color-accent-green: #008900;
   --color-accent-blue: #002297;
-  --color-accent-purple: #9b166a;
+  --color-accent-purple: #81007d;
+  /* --color-accent-purple: #9b166a; */
   --color-accent-yellow: #a57000;
 
   --color-accent-carousel-pink: #8d1361;
@@ -85,4 +97,3 @@
 /* ================================
      Background Colors
      ================================ */
-/* --color-bg-pink: #fff1fa; */

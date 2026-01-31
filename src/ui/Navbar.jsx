@@ -1,6 +1,7 @@
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/logo.webp";
-import { motion } from "motion/react";
+import logoDark from "../assets/logoDark.webp";
+import { AnimatePresence, motion } from "motion/react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTheme } from "../features/theme/themeSlice";
 
@@ -42,41 +43,50 @@ function Navbar({ bg, iconColor, modeBgColor, modeBorder }) {
       >
         {/* Logo */}
         <div>
-          <img src={logo} alt="super sound logo" />
+          <AnimatePresence mode="wait">
+            <motion.img
+              src={isDark ? logoDark : logo}
+              alt="super sound logo"
+              key={isDark}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+            />
+          </AnimatePresence>
         </div>
 
         {/* Navlinks */}
         <ul className="flex items-center gap-15">
           {navlinks.map((link) => (
-            <motion.li
-              key={link.id}
-              whileHover={{ y: 8 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className={`cursor-pointer text-base text-[#4a4646] first-of-type:font-medium first-of-type:text-black dark:text-[#f5f5f5] first-of-type:dark:text-[#f5f5f5]`}
+            <li
+              className={`cursor-pointer text-base text-[#4a4646] transition-all duration-300 first-of-type:font-medium first-of-type:text-black hover:scale-105 dark:text-[#f5f5f5] first-of-type:dark:text-[#f5f5f5]`}
             >
               {link.label}
-            </motion.li>
+            </li>
           ))}
 
-          {/* theme */}
+          {/* Theme */}
           <button
+            title={`Toggle theme (currently ${mode} mode)`}
             onClick={() => dispatch(setTheme(isDark ? "light" : "dark"))}
-            className={`relative ms-2.25 flex h-5 w-16 cursor-pointer items-center rounded-full transition-all duration-500 ease-out ${!isDark ? "justify-end bg-white pe-2" : "bg-text-muted ps-2"}`}
+            className={`relative ms-2.25 flex h-5 w-16 cursor-pointer items-center rounded-full transition-all duration-500 ease-out ${!isDark ? "justify-end bg-white pe-2" : "bg-bg-muted ps-2"}`}
           >
-            {!isDark && (
-              <motion.p
-                className="text-[8px] leading-2 uppercase"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-              >
-                light
-                <br />
-                mode
-              </motion.p>
-            )}
+            <AnimatePresence mode="popLayout">
+              {!isDark && (
+                <motion.p
+                  className="text-[8px] leading-2 uppercase"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                >
+                  light
+                  <br />
+                  mode
+                </motion.p>
+              )}
+            </AnimatePresence>
 
             {/* Icon */}
             <div
@@ -89,19 +99,21 @@ function Navbar({ bg, iconColor, modeBgColor, modeBorder }) {
               )}
             </div>
 
-            {isDark && (
-              <motion.p
-                className="text-[8px] leading-2 uppercase"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-              >
-                dark
-                <br />
-                mode
-              </motion.p>
-            )}
+            <AnimatePresence mode="popLayout">
+              {isDark && (
+                <motion.p
+                  className="text-[8px] leading-2 uppercase"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                >
+                  dark
+                  <br />
+                  mode
+                </motion.p>
+              )}
+            </AnimatePresence>
           </button>
         </ul>
       </nav>
