@@ -2,28 +2,48 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* ================================
      Typography
      ================================ */
   --font-rubik: "Rubik", sans-serif;
 
+  /* ********************************
+     Light Mode
+     ******************************** */
+
   /* ================================
-     Neutral Colors — Light Mode
+     Background Colors
      ================================ */
   --color-bg-pink: #fff1fa;
   --color-bg-green: #f4fff4;
-  --color-bg-yellow: #fff8ea;
   --color-bg-blue: #f6f8ff;
   --color-bg-purple: #fff2ff;
-
+  --color-bg-yellow: #fff8ea;
   --color-bg-slideControl: #efefef;
   --color-bg-muted: #f7f7f7;
 
+  /* ================================
+     Navbars 
+     ================================ */
+  --color-navbar-pink: #a0166e;
+  --color-navbar-green: #008900;
+  --color-navbar-blue: #002296;
+  --color-navbar-purple: #81007d;
+  --color-navbar-yellow: #a57000;
+
+  /* ================================
+     Texts
+     ================================ */
   --color-text-primary: #1b1a1b;
   --color-text-secondary: #6b6b6b;
   --color-text-muted: #d9d9d9;
 
+  /* ================================
+     Borders
+     ================================ */
   --color-border-soft: #e6e6e6;
 
   /* ================================
@@ -58,17 +78,11 @@
   /* --shadow-accent: 0 0 40px var(--color-accent-glow); */
 }
 
-testt {
-  color: rgba(0, 0, 0, 0.342);
-}
-/* [data-theme="dark"] {
-  --bg-main: #050505;
-  --bg-card: #121212;
-  --bg-muted: #1a1a1a;
+/* ********************************
+     Dark Mode
+     ******************************** */
 
-  --text-primary: #ffffff;
-  --text-secondary: #d1d1d1;
-  --text-muted: #8b8b8b;
-
-  --border-soft: #262626;
-} */
+/* ================================
+     Background Colors
+     ================================ */
+/* --color-bg-pink: #fff1fa; */

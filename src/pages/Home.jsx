@@ -13,6 +13,7 @@ import chevronRight from "../assets/chevron-right.webp";
 import facebook from "../assets/facebook.png";
 import instagram from "../assets/instagram.png";
 import twitter from "../assets/twitter.png";
+import Navbar from "../ui/Navbar";
 
 const variants = [
   {
@@ -22,7 +23,9 @@ const variants = [
     ring: "ring-accent-dot-pink/20",
     img: HeadpiecePink,
     bg: "bg-bg-pink",
+    bgDark: "dark:bg-[#0a0b0a]",
     text: "text-accent-pink",
+    modeBorder: "border-accent-pink",
     carousel: "bg-accent-carousel-pink",
   },
   {
@@ -32,7 +35,9 @@ const variants = [
     ring: "ring-accent-dot-green/20",
     img: HeadpieceGreen,
     bg: "bg-bg-green",
+    bgDark: "dark:bg-[#0a0b0a]",
     text: "text-accent-green",
+    modeBorder: "border-accent-green",
     carousel: "bg-accent-carousel-green",
   },
   {
@@ -42,7 +47,9 @@ const variants = [
     ring: "ring-accent-dot-blue/20",
     img: HeadpieceBlue,
     bg: "bg-bg-blue",
+    bgDark: "dark:bg-[#0a0b0a]",
     text: "text-accent-blue",
+    modeBorder: "border-accent-blue",
     carousel: "bg-accent-carousel-blue",
   },
   {
@@ -52,7 +59,9 @@ const variants = [
     ring: "ring-accent-dot-purple/20",
     img: HeadpiecePurple,
     bg: "bg-bg-purple",
+    bgDark: "dark:bg-[#0a0b0a]",
     text: "text-accent-purple",
+    modeBorder: "border-accent-purple",
     carousel: "bg-accent-carousel-purple",
   },
   {
@@ -62,7 +71,9 @@ const variants = [
     ring: "ring-accent-dot-yellow/20",
     img: HeadpieceYellow,
     bg: "bg-bg-yellow",
+    bgDark: "dark:bg-[#0a0b0a]",
     text: "text-accent-yellow",
+    modeBorder: "border-accent-yellow",
     carousel: "bg-accent-carousel-yellow",
   },
 ];
@@ -94,7 +105,6 @@ const carouselItems = [
 function Home() {
   const [activeVariant, setActiveVariant] = useState(variants[0]);
   const [carouselIndex, setCarouselIndex] = useState(0);
-  // const [variantIndex, setVariantIndex] = useState(0);
 
   function next() {
     setCarouselIndex((i) => (i + 1) % carouselItems.length);
@@ -108,9 +118,14 @@ function Home() {
 
   return (
     <div
-      className={`pb-12 transition-all duration-700 ease-in-out ${activeVariant.bg}`}
+      className={`pb-12 transition-all duration-700 ease-in-out ${activeVariant.bgDark} ${activeVariant.bg}`}
     >
-      <nav></nav>
+      <Navbar
+        bg={`${activeVariant.carousel}/5`}
+        iconColor={`${activeVariant.text}`}
+        modeBgColor={activeVariant.carousel}
+        modeBorder={activeVariant.modeBorder}
+      />
 
       <main className="pt-24">
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between px-8 lg:flex-row">
@@ -119,7 +134,7 @@ function Home() {
             {/* texts */}
             <div className="mb-5.75">
               <span
-                className={`mb-2 text-[17px] font-bold transition-all duration-700 ease-in-out ${activeVariant.text}`}
+                className={`mb-2 text-[17px] font-bold transition-all duration-700 ease-in-out text-${activeVariant.text}`}
               >
                 SUMMER COLLECTION
               </span>
@@ -191,9 +206,9 @@ function Home() {
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeVariant.id}
-                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  initial={{ opacity: 0, scale: 0.5, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                  exit={{ opacity: 0, scale: 0.5, y: -20 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
                   src={activeVariant.img}
                   alt="pink head phone"
