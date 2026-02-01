@@ -10,10 +10,6 @@
      ================================ */
   --font-rubik: "Rubik", sans-serif;
 
-  /* ********************************
-     Light Mode
-     ******************************** */
-
   /* ================================
      Background Colors - Light Mode
      ================================ */
@@ -60,7 +56,6 @@
      Accent Colors
      ================================ */
   --color-accent-pink: #9b166a;
-  /* --color-accent-pink: #9b1668; */
   --color-accent-green: #008900;
   --color-accent-blue: #002297;
   --color-accent-purple: #81007d;
@@ -106,8 +101,4 @@
   --color-blue-gradient-end: rgba(24, 51, 143, 0.2);
 
   --color-purple-gradient-end: rgba(154, 33, 150, 0.3);
-}
-
-.test {
-  color: rgba(157, 22, 110, 0.1);
 }

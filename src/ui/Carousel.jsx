@@ -28,13 +28,13 @@ function Carousel() {
   const { isDark, activeVariant } = useTheme();
 
   function next() {
-    setCarouselIndex((i) => (i + 1) % carouselItems.length);
+    if (carouselIndex >= 0 && carouselIndex < carouselItems.length - 1)
+      setCarouselIndex((i) => (i + 1) % carouselItems.length);
   }
 
   function prev() {
-    setCarouselIndex(
-      (i) => (i - 1 + carouselItems.length) % carouselItems.length,
-    );
+    if (carouselIndex > 0)
+      setCarouselIndex((i) => (i - 1) % carouselItems.length);
   }
 
   return (
@@ -47,7 +47,7 @@ function Carousel() {
           {carouselItems.map((item, i) => (
             <li
               key={i}
-              className="min-w-full ps-2 transition-all duration-700"
+              className="min-w-full ps-2 transition-transform duration-700"
               style={{
                 transform: `translateX(-${carouselIndex * 100}%)`,
               }}
@@ -64,13 +64,29 @@ function Carousel() {
         <div className="flex justify-end pe-4">
           <div className="flex h-6 w-fit items-center gap-3 rounded-[10px] bg-bg-slideControl px-1 transition-all duration-500 ease-in-out dark:bg-[#ededed]/43">
             {/* left */}
-            <button onClick={prev} className="cursor-pointer">
-              <img src={chevronLeft} alt="chevron left" />
+            <button
+              onClick={prev}
+              className="cursor-pointer disabled:cursor-not-allowed"
+              disabled={carouselIndex === 0}
+            >
+              <img
+                src={chevronLeft}
+                alt="chevron left"
+                className={`${carouselIndex === 0 ? "opacity-50" : "opacity-100"}`}
+              />
             </button>
             <span className="inline-block h-full w-px bg-[#c6c6c6]"></span>
             {/* right */}
-            <button onClick={next} className="cursor-pointer">
-              <img src={chevronRight} alt="chevron right" />
+            <button
+              onClick={next}
+              className="cursor-pointer disabled:cursor-not-allowed"
+              disabled={carouselIndex === carouselItems.length - 1}
+            >
+              <img
+                src={chevronRight}
+                alt="chevron right"
+                className={`${carouselIndex < carouselItems.length - 1 ? "opacity-100" : "opacity-50"}`}
+              />
             </button>
           </div>
         </div>

@@ -94,7 +94,11 @@ const initialVariants = [
 ];
 
 const initialState = {
-  mode: localStorage.getItem("mode") || "dark",
+  mode:
+    localStorage.getItem("mode") ||
+    (!("mode" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches &&
+      "dark"),
 
   variants: initialVariants,
 
