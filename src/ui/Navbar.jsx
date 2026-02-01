@@ -32,8 +32,7 @@ function Navbar() {
 
   return (
     <header
-      className={`fixed z-500 w-full backdrop-blur-xl transition-all duration-700 ease-in-out ${isDark ? "bg-[#151615]" : activeVariant.navbarBg}`}
-      // className={`fixed z-500 w-full backdrop-blur-xl transition-all duration-700 ease-in-out ${bg}`}
+      className={`fixed z-500 w-full backdrop-blur-xl transition-all duration-700 ease-in-out ${isDark ? "bg-border-soft/5" : activeVariant.navbarBg}`}
     >
       <nav
         className={`mx-auto flex w-full max-w-7xl items-center justify-between px-8 py-5 lg:px-8`}
@@ -56,12 +55,20 @@ function Navbar() {
         {/* Navlinks */}
         <ul className="flex items-center gap-15">
           {navlinks.map((link) => (
-            <li
+            <motion.li
               key={link.id}
-              className={`cursor-pointer text-base text-[#4a4646] transition-all duration-300 first-of-type:font-medium first-of-type:text-black hover:scale-105 dark:text-text-dark first-of-type:dark:text-text-dark`}
+              whileTap={{ scale: 0.9 }}
+              animate={{
+                scale: 1,
+              }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className={`group relative cursor-pointer text-base text-[#4a4646] transition-colors duration-300 first-of-type:font-medium first-of-type:text-black dark:text-text-dark first-of-type:dark:text-text-dark`}
             >
-              {link.label}
-            </li>
+              <span>{link.label}</span>
+              <span
+                className={`absolute bottom-0 left-0 inline-block h-px w-0 transition-all duration-500 group-hover:w-full ${activeVariant.carousel}`}
+              ></span>
+            </motion.li>
           ))}
 
           {/* Theme */}

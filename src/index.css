@@ -64,7 +64,6 @@
   --color-accent-green: #008900;
   --color-accent-blue: #002297;
   --color-accent-purple: #81007d;
-  /* --color-accent-purple: #9b166a; */
   --color-accent-yellow: #a57000;
 
   --color-accent-carousel-pink: #8d1361;
@@ -79,21 +78,36 @@
   --color-accent-dot-purple: #a800a3;
   --color-accent-dot-yellow: #a36f00;
 
-  --color-accent-glow: rgba(141, 19, 96, 0.3);
   --color-accent-dots: #901363;
 
   /* ================================
      Shadows
      ================================ */
-  --shadow-black: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
-  --shadow-accent: -2px 5px 15px 1px var(--color-accent-glow);
-  /* --shadow-accent: 0 0 40px var(--color-accent-glow); */
+  --shadow-ellipse: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+
+  --shadow-accent-pink: -2px 3px 10px 1px rgba(141, 19, 96, 0.2);
+  --shadow-accent-green: -2px 3px 10px 1px rgba(0, 122, 0, 0.2);
+  --shadow-accent-yellow: -2px 3px 10px 1px rgba(165, 113, 0, 0.2);
+  --shadow-accent-blue: -2px 3px 10px 1px rgba(0, 35, 151, 0.17);
+  --shadow-accent-purple: -2px 3px 10px 1px rgba(151, 0, 146, 0.2);
+
+  /* ================================
+     Gradients - Dark Mode
+     ================================ */
+  --color-gradient-start: #464144;
+
+  --color-pink-gradient-start: #6b6b6b;
+  --color-pink-gradient-end: rgba(157, 22, 110, 0.3);
+
+  --color-green-gradient-end: rgba(23, 150, 23, 0.3);
+
+  --color-yellow-gradient-end: rgba(120, 90, 26, 0.3);
+
+  --color-blue-gradient-end: rgba(24, 51, 143, 0.2);
+
+  --color-purple-gradient-end: rgba(154, 33, 150, 0.3);
 }
 
-/* ********************************
-     Dark Mode
-     ******************************** */
-
-/* ================================
-     Background Colors
-     ================================ */
+.test {
+  color: rgba(157, 22, 110, 0.1);
+}
