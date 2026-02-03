@@ -9,30 +9,31 @@ function Home() {
 
   return (
     <div
-      className={`pb-12 transition-all duration-700 ease-in-out dark:bg-bg-dark ${activeVariant.bg}`}
+      className={`h-full pb-18 transition-all duration-700 ease-in-out dark:bg-bg-dark ${activeVariant.bg}`}
     >
       <Navbar />
 
       <main className="pt-24">
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between px-8 lg:flex-row">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 justify-between px-4 md:grid-cols-2 md:items-center lg:flex lg:px-8">
+          {/* <div className="mx-auto flex w-full max-w-7xl flex-col justify-between px-4 md:flex-row md:items-center lg:px-8"> */}
           {/* Texts and carousel*/}
           <div className="lg:basis-md">
             {/* texts */}
-            <div className="mb-5.75">
+            <div className="max-w-[288px mb-5.75 w-full">
               <span
-                className={`mb-2 text-[17px] font-bold transition-all duration-700 ease-in-out ${activeVariant.text}`}
+                className={`text-xs font-bold transition-all duration-700 ease-in-out lg:mb-2 lg:text-[17px] ${activeVariant.text}`}
               >
                 SUMMER COLLECTION
               </span>
-              <h1 className="relative mb-4 text-[64px] font-bold transition-all duration-500 dark:text-text-dark">
+              <h1 className="relative -mt-1.5 mb-2.5 w-fit text-[42px] font-bold transition-all duration-500 lg:mt-0 lg:mb-4 lg:text-[64px] dark:text-text-dark">
                 SuperSound
                 <span
-                  className={`absolute top-3 right-7.5 text-sm transition-all duration-700 ease-in-out ${activeVariant.text}`}
+                  className={`absolute top-1 -right-4.5 text-xs transition-all duration-700 ease-in-out lg:top-3 lg:-right-6 lg:text-sm ${activeVariant.text}`}
                 >
                   TM
                 </span>
               </h1>
-              <p className="text-lg leading-5.25 text-black transition-all duration-500 dark:text-text-dark">
+              <p className="text-base text-black transition-all duration-500 lg:text-lg lg:leading-5.25 dark:text-text-dark">
                 Enjoy a super listening experience at maximum comfort and sound
                 quality this summer. Sounds made to thrill and style made to
                 please.
@@ -40,7 +41,7 @@ function Home() {
             </div>
 
             {/* carousel */}
-            <Carousel />
+            {/* <Carousel /> */}
           </div>
 
           {/* images */}
