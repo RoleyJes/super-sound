@@ -9,7 +9,7 @@ function HeadphonesAndControls() {
   return (
     <div className="relative lg:basis-147.5">
       {/* headphones */}
-      <div className="mx-auto size-4/5 lg:h-143.25 lg:w-125.5">
+      <div className="mx-auto size-4/5 h-77.5 lg:h-143.25 lg:w-125.5">
         <AnimatePresence mode="wait">
           <motion.img
             key={activeVariant.id}
@@ -19,13 +19,13 @@ function HeadphonesAndControls() {
             transition={{ duration: 0.35, ease: "easeOut" }}
             src={activeVariant.img}
             alt="pink head phone"
-            className="w-full object-contain"
+            className="h-full w-full object-contain"
           />
         </AnimatePresence>
       </div>
 
       {/* sound bars img */}
-      <div className="mt-3 flex w-2/3 place-self-center lg:-mt-10">
+      <div className="-mt-4 flex w-2/3 place-self-center md:mt-0 lg:-mt-4">
         <img src={soundPink} alt="stereo" />
       </div>
 

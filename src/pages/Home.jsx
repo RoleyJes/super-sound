@@ -14,7 +14,7 @@ function Home() {
         className={`min-h-screen pb-12 transition-all duration-700 ease-in-out dark:bg-bg-dark ${activeVariant.bg}`}
       >
         <main className="pt-24 md:pt-32 lg:pt-24">
-          <div className="mx-auto grid w-full max-w-7xl grid-cols-1 justify-between gap-y-8 px-4 md:grid-cols-2 md:items-center md:px-6 lg:flex lg:px-8">
+          <div className="mx-auto grid w-full max-w-7xl grid-cols-1 justify-between gap-y-4 px-4 md:grid-cols-2 md:items-center md:px-6 lg:flex lg:px-8">
             {/* Texts and carousel*/}
             <div className="lg:basis-md">
               {/* texts */}
