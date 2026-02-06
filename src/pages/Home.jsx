@@ -9,7 +9,7 @@ function Home() {
 
   return (
     <div
-      className={`h-full pb-18 transition-all duration-700 ease-in-out dark:bg-bg-dark ${activeVariant.bg}`}
+      className={`min-h-screen pb-18 transition-all duration-700 ease-in-out dark:bg-bg-dark ${activeVariant.bg}`}
     >
       <Navbar />
 
@@ -41,7 +41,7 @@ function Home() {
             </div>
 
             {/* carousel */}
-            {/* <Carousel /> */}
+            <Carousel />
           </div>
 
           {/* images */}
