@@ -25,12 +25,12 @@ function HeadphonesAndControls() {
       </div>
 
       {/* sound bars img */}
-      <div className="flex w-2/3 items-center justify-center">
-        <img src={soundPink} alt="stereo" className="-mt-10" />
+      <div className="flex w-2/3 place-self-center">
+        <img src={soundPink} alt="stereo" className="lg:-mt-10" />
       </div>
 
       {/* right dots for selecting headphones */}
-      <div className="absolute right-0 bottom-1/2 flex h-2/3 w-1.25 translate-y-1/2 flex-col items-center justify-center gap-12.25 rounded-[30px] bg-[#eeeeee] transition-all duration-700 ease-in-out dark:bg-[#eeeeee]/60">
+      <div className="absolute right-0 bottom-1/2 flex h-2/3 w-1 translate-y-1/2 flex-col items-center justify-center gap-5 rounded-[30px] bg-[#eeeeee] transition-all duration-700 ease-in-out md:gap-7 lg:w-1.25 lg:gap-12.25 dark:bg-[#eeeeee]/60">
         {variants.map((variant) => {
           const isActive = variant.id === activeVariant.id;
           return (
@@ -43,7 +43,7 @@ function HeadphonesAndControls() {
                 opacity: isDark ? 1 : isActive ? 1 : 0.6,
               }}
               transition={{ type: "spring", stiffness: 300 }}
-              className={`size-3 cursor-pointer rounded-sm ${variant.dot} ${isActive ? `${variant.outline} ${variant.ring} ring-6 outline-4` : ""}`}
+              className={`size-2.5 cursor-pointer rounded-full md:rounded-sm lg:size-3 ${variant.dot} ${isActive ? `${variant.outline} ${variant.ring} ring-6 outline-4` : ""}`}
             />
           );
         })}
