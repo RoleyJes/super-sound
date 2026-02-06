@@ -9,13 +9,12 @@ function Home() {
 
   return (
     <div
-      className={`min-h-screen pb-18 transition-all duration-700 ease-in-out dark:bg-bg-dark ${activeVariant.bg}`}
+      className={`min-h-screen pb-12 transition-all duration-700 ease-in-out dark:bg-bg-dark ${activeVariant.bg}`}
     >
       <Navbar />
 
-      <main className="pt-24">
-        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 justify-between px-4 md:grid-cols-2 md:items-center lg:flex lg:px-8">
-          {/* <div className="mx-auto flex w-full max-w-7xl flex-col justify-between px-4 md:flex-row md:items-center lg:px-8"> */}
+      <main className="pt-24 md:pt-32 lg:pt-24">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 justify-between gap-y-8 px-4 md:grid-cols-2 md:items-center md:px-6 lg:flex lg:px-8">
           {/* Texts and carousel*/}
           <div className="lg:basis-md">
             {/* texts */}

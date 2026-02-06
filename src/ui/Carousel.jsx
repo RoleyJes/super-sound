@@ -40,20 +40,20 @@ function Carousel() {
   return (
     <div className="relative">
       <div
-        className={`relative max-w-96.75 rounded-[20px] ps-17.5 pt-7 pb-4 text-white transition-all duration-700 ease-in-out ${activeVariant.carouselShadow} ${isDark ? `bg-linear-to-b ${activeVariant.carouselGradientStart} ${activeVariant.carouselGradientEnd}` : activeVariant.carousel} `}
+        className={`relative w-full max-w-96.75 rounded-[20px] ps-4 pt-3 pb-4 text-white transition-all duration-700 ease-in-out lg:place-self-start lg:ps-17.5 lg:pt-7 ${activeVariant.carouselShadow} ${isDark ? `bg-linear-to-b ${activeVariant.carouselGradientStart} ${activeVariant.carouselGradientEnd}` : activeVariant.carousel} `}
       >
         {/* Carousel content */}
-        <ul className="flex w-full overflow-hidden">
+        <ul className="mb-2 flex w-full overflow-hidden lg:mb-0">
           {carouselItems.map((item, i) => (
             <li
               key={i}
-              className="min-w-full ps-2 transition-transform duration-700"
+              className="min-w-full ps-2 pe-4 transition-transform duration-700"
               style={{
                 transform: `translateX(-${carouselIndex * 100}%)`,
               }}
             >
-              <div className="max-w-55">
-                <p className="font-semibold">{item.title}</p>
+              <div className="w-full lg:max-w-55">
+                <p className="mb-2 leading-[1.2] font-semibold">{item.title}</p>
                 <p className="text-sm leading-4.25">{item.description}</p>
               </div>
             </li>
@@ -93,7 +93,7 @@ function Carousel() {
 
         {/* Ellipse */}
         <div
-          className={`absolute top-1/2 right-[89.5%] flex size-20.25 -translate-y-1/2 items-center justify-center rounded-full shadow-ellipse ${isDark ? "bg-linear-to-tr from-white/88 to-white/9" : "bg-white"}`}
+          className={`absolute top-1/2 right-[89.5%] hidden size-20.25 -translate-y-1/2 items-center justify-center rounded-full shadow-ellipse lg:flex ${isDark ? "bg-linear-to-tr from-white/88 to-white/9" : "bg-white"}`}
         >
           <AnimatePresence mode="popLayout">
             <motion.img

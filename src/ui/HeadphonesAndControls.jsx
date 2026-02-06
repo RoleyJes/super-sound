@@ -25,8 +25,8 @@ function HeadphonesAndControls() {
       </div>
 
       {/* sound bars img */}
-      <div className="flex w-2/3 place-self-center">
-        <img src={soundPink} alt="stereo" className="lg:-mt-10" />
+      <div className="mt-3 flex w-2/3 place-self-center lg:-mt-10">
+        <img src={soundPink} alt="stereo" />
       </div>
 
       {/* right dots for selecting headphones */}
